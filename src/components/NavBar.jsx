@@ -1,5 +1,7 @@
 import logo from '../images/logo.svg';
-import { links, icons } from '../data';
+import { icons } from '../data';
+import PageLinks from './PageLinks';
+import SocialLink from './SocialLink';
 const NavBar = () => {
   return (
     <nav className='navbar'>
@@ -11,54 +13,11 @@ const NavBar = () => {
           </button>
         </div>
         {/* <!-- left this comment on purpose --> */}
-        <ul className='nav-links' id='nav-links'>
-          {links.map((link) => {
-            return (
-              <li key={link.id}>
-                <a href={link.href} className='nav-link'>
-                  {link.text}
-                </a>
-              </li>
-            );
-          })}
-
-          {/* <li>
-            <a href='#about' className='nav-link'>
-              {' '}
-              about{' '}
-            </a>
-          </li>
-
-          <li>
-            <a href='#services' className='nav-link'>
-              {' '}
-              services{' '}
-            </a>
-          </li>
-
-          <li>
-            <a href='#tours' className='nav-link'>
-              {' '}
-              tours
-            </a>
-          </li> */}
-        </ul>
+        <PageLinks parentClass='nav-links' itemClass='nav-link' />
 
         <ul className='nav-icons'>
           {icons.map((icon) => {
-            const { id, href, text } = icon;
-            return (
-              <li key={id}>
-                <a
-                  href={href}
-                  target='_blank'
-                  className='nav-icon'
-                  rel='noreferrer'
-                >
-                  <i className={text}></i>
-                </a>
-              </li>
-            );
+            return <SocialLink key={icon.id} {...icon} itemClass='nav-icon' />;
           })}
         </ul>
       </div>
